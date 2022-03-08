@@ -24,7 +24,7 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text<TypeProps>`
-  font-family: ${({ theme, type }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(14)}px;
 
   color: ${({ theme, type }) =>
@@ -53,6 +53,7 @@ export const Icon = styled(Feather)<TypeProps>`
     `}
 `;
 export const Footer = styled.View``;
+
 export const Amount = styled.Text<TypeProps>`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(32)}px;
