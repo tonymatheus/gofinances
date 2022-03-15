@@ -8,7 +8,7 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Form = styled.View`
+export const Form = styled.KeyboardAvoidingView`
   flex: 1;
   width: 100%;
   padding: 24px;
