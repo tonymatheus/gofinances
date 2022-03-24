@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { schema } from "./validationRegister";
 
 import { Button } from "../../components/Form/Button";
 import { CategorySelectButton } from "../../components/Form/CategorySelectButton";
@@ -26,14 +27,6 @@ interface FormData {
   name: string;
   amount: string;
 }
-
-const schema = Yup.object().shape({
-  name: Yup.string().required("Nome é Obrigatório"),
-  amount: Yup.number()
-    .typeError("Informe um valor numérico")
-    .positive("O valor não pode ser negativo")
-    .required("O valor é obrigatório"),
-});
 
 export function Register() {
   const [transactionType, setTransactionType] = useState("");
