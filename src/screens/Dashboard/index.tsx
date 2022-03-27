@@ -1,8 +1,13 @@
-import React from "react";
-import { getBottomSpace } from "react-native-iphone-x-helper";
+import React, {
+  useEffect,
+  useState,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { HighlightCard } from "../../components/HightlightCard";
 import { TransactionCard } from "../../components/TransactionCard";
 import { TransactionCardProps } from "../../components/TransactionCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
   Container,
@@ -20,47 +25,57 @@ import {
   TransactionsList,
   LogoutButton,
 } from "./styles";
+import { useFocusEffect } from "@react-navigation/native";
 
 export interface DataListProps extends TransactionCardProps {
   id: string;
 }
 
 export function Dashboard() {
-  const data: DataListProps[] = [
-    {
-      id: "1",
-      type: "positive",
-      title: "Desenvolvimento de site",
-      amount: "R$2.800",
-      category: {
-        name: "vendas",
-        icon: "dollar-sign",
-      },
-      date: "18/02/2022",
-    },
-    {
-      id: "2",
-      type: "negative",
-      title: "Aluguel do apartamento",
-      amount: "R$2.800",
-      category: {
-        name: "vendas",
-        icon: "shopping-bag",
-      },
-      date: "18/02/2022",
-    },
-    {
-      id: "3",
-      type: "positive",
-      title: "Desenvolvimento desite",
-      amount: "R$2.800",
-      category: {
-        name: "vendas",
-        icon: "coffee",
-      },
-      date: "18/02/2022",
-    },
-  ];
+  const [data, setData] = useState<DataListProps[]>([]);
+
+  async function loadTransactions() {
+    const dataKey = "@gofinances:transactions";
+    const response = await AsyncStorage.getItem(dataKey);
+
+    const transactions = response ? JSON.parse(response) : [];
+
+    const transactionsFormatted: DataListProps[] = transactions.map(
+      (item: DataListProps) => {
+        const amount = Number(item.amount).toLocaleString("pt-br", {
+          style: "currency",
+          currency: "BRL",
+        });
+
+        const date = Intl.DateTimeFormat("pt-br", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "2-digit",
+        }).format(new Date(item.date));
+
+        return {
+          id: item.id,
+          name: item.name,
+          amount,
+          type: item.type,
+          category: item.category,
+          date,
+        };
+      }
+    );
+    setData(transactionsFormatted);
+  }
+
+  useEffect(() => {
+    loadTransactions();
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      loadTransactions();
+    }, [])
+  );
+
 
   return (
     <Container>
