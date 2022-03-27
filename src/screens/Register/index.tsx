@@ -110,15 +110,6 @@ export function Register() {
     }
   }
 
-  // useEffect(() => {
-  //   const dataKey = "@gofinances:transactions";
-  //   async function removeData() {
-  //     await AsyncStorage.removeItem(dataKey);
-  //   }
-
-  //   removeData();
-  // }, []);
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
