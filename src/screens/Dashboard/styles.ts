@@ -63,10 +63,7 @@ export const Icon = styled(Feather)`
   font-size: ${RFValue(24)}px;
 `;
 
-export const LogoutButton = styled(BorderlessButton)`
-
-
-`;
+export const LogoutButton = styled(BorderlessButton)``;
 
 export const HighlightCards = styled.ScrollView.attrs({
   horizontal: true,
@@ -100,3 +97,9 @@ export const TransactionsList = styled(
   },
   showsVerticalScrollIndicator: false,
 })``;
+
+export const LoadContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
