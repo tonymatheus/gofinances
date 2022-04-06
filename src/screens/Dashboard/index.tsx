@@ -61,7 +61,7 @@ export function Dashboard() {
       Math.max.apply(
         Math,
         collection
-          .filter((transaction) => transaction.type === "positive")
+          .filter((transaction) => transaction.type === type)
           .map((transaction) => new Date(transaction.date).getTime())
       )
     );

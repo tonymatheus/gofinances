@@ -39,8 +39,8 @@ export function TransactionCard({ data }: Props) {
       </Amount>
       <Footer>
         <Category>
-          <Icon name={category.icon} />
-          <CategoryName>{category.name}</CategoryName>
+          <Icon name={category?.icon} />
+          <CategoryName>{category?.name}</CategoryName>
         </Category>
         <Date>{data.date}</Date>
       </Footer>
