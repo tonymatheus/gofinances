@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { StatusBar } from "react-native";
 import Apploading from "expo-app-loading";
 import "intl";
 import "intl/locale-data/jsonp/pt-BR";
@@ -31,6 +32,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
+          <StatusBar barStyle="light-content" />
           <AppRoutes />
         </NavigationContainer>
       </ThemeProvider>
