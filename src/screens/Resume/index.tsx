@@ -51,11 +51,15 @@ export function Resume() {
   );
 
   function handleDateChange(action: "next" | "prev") {
-    if (action === "next") {
-      setSelectedDate(addMonths(selectedDate, 1));
-    } else {
-      setSelectedDate(subMonths(selectedDate, 1));
-    }
+    // if (action === "next") {
+    //   setSelectedDate(addMonths(selectedDate, 1));
+    // } else {
+    //   setSelectedDate(subMonths(selectedDate, 1));
+    // }
+
+    action === "next"
+      ? setSelectedDate(addMonths(selectedDate, 1))
+      : setSelectedDate(subMonths(selectedDate, 1));
   }
 
   async function loadData() {
