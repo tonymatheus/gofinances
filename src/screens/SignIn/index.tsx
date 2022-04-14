@@ -24,7 +24,7 @@ export function SignIn() {
       return await signInWithGoogle();
     } catch (error) {
       console.log(error);
-      Alert.alert("Náo foi poss[ivel estabelecer o login com a conta goole");
+      Alert.alert("Náo foi possível estabelecer o login com a conta goole");
     }
   }
   return (
