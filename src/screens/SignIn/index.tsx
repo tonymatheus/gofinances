@@ -15,20 +15,29 @@ import LogoSvg from "../../assets/logo.svg";
 import { RFValue } from "react-native-responsive-fontsize";
 import { SignInSocialButton } from "../../components/SignInSocialButton";
 import { useAuth } from "../../hooks/auth";
-
-
+import * as AppleAuthentication from "expo-apple-authentication";
 
 export function SignIn() {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signInWithApple } = useAuth();
 
   async function handleSignInWithGoogle() {
     try {
       return await signInWithGoogle();
     } catch (error) {
       console.log(error);
-      Alert.alert("Náo foi possível estabelecer o login com a conta goole");
+      Alert.alert("Não foi possível estabelecer o login com a conta goole");
     }
   }
+
+  async function handleSignInWithApple() {
+    try {
+      return await signInWithApple();
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Não foi possível possível estabelecer o login com a");
+    }
+  }
+
   return (
     <Container>
       <Header>
@@ -52,7 +61,11 @@ export function SignIn() {
             svg={GoogleSvg}
             onPress={handleSignInWithGoogle}
           />
-          <SignInSocialButton title="Acessar Apple" svg={AppleSvg} />
+          <SignInSocialButton
+            title="Acessar com Apple"
+            svg={AppleSvg}
+            onPress={handleSignInWithApple}
+          />
         </FooterWrapper>
       </Footer>
     </Container>
