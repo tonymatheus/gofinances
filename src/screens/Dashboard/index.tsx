@@ -66,8 +66,6 @@ export function Dashboard() {
     if (collectionFiltered.length === 0) {
       return 0;
     }
-    console.log(type, collectionFiltered);
-
     const lastTransactions = new Date(
       Math.max.apply(
         Math,

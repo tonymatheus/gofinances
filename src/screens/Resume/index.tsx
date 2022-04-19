@@ -78,8 +78,6 @@ export function Resume() {
       0
     );
 
-    console.log(expensiveTotal);
-
     const totalByCategory: CategoryData[] = [];
     categories.forEach((category) => {
       let categorySum = 0;

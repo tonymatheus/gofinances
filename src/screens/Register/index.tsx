@@ -88,7 +88,7 @@ export function Register() {
       category: category.key,
       date: new Date(),
     };
-    console.log(newTransaction);
+    
     try {
       const dataKey = `@gofinances:transactions_user:${user.id}`;
       const data = await AsyncStorage.getItem(dataKey);
